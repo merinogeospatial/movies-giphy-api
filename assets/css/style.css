@@ -1,3 +1,7 @@
+body {
+    font-family: 'Passion One', cursive;
+}
+
 #button-container {
     width: 100%;
     height: 10%; 
