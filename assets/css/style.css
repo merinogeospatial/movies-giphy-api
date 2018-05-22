@@ -6,6 +6,15 @@ body {
     width: 100%;
     height: 10%; 
     overflow: auto;
-    position: relative;
+}
+
+#movie-overview {
+width: 40%;
+border: red dashed 1pt;
+}
+
+#gif-container {
+width: 40%;
+border: red dashed 1pt;
 }
 
