@@ -26,6 +26,7 @@ $('#add-movie').on('click', function(){
 // Get imdb api
     // append movie title, image, and plot
 
+    
 
 
 
