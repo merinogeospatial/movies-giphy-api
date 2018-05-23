@@ -19,9 +19,12 @@ $('#add-movie').on('click', function(){
     newMovie = $('#inlineFormInput').val();
     movArr.push(newMovie);
     initButtons(movArr);
-
 })
 
+// Get giphy api
+    // append to 10 gifs to div
+// Get imdb api
+    // append movie title, image, and plot
 
 
 
