@@ -11,10 +11,12 @@ body {
 #movie-overview {
 width: 40%;
 border: red dashed 1pt;
+overflow-x: auto;
 }
 
 #gif-container {
 width: 40%;
 border: red dashed 1pt;
+overflow-y: auto;
 }
 

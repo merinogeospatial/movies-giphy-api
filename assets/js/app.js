@@ -23,10 +23,17 @@ $('#add-movie').on('click', function(){
 
 initButtons(movArr);
 
+// Prevent enter from refreshing page
+$('form').keypress(function(event) { 
+    return event.keyCode != 13;
+}); 
+
 $('#button-container').on('click','button',function() {
+    
 
-    movie = $(this).attr('data');
+    $('#movie-overview').empty();
 
+    movie = $(this).attr('data').trim();
     baseURL = 'http://www.omdbapi.com/?apikey=';
     apiKey = 'trilogy';
     queryURL = baseURL + apiKey + '&t=' + movie;
@@ -35,7 +42,24 @@ $('#button-container').on('click','button',function() {
         url: queryURL,
         method: 'GET'
     }).then(function(response) {
-        console.log(response);
+    
+        h1 = $('<h1>');
+        img = $('<img>');
+        p = $('<p>');
+        h3 = $('<h3>');
+        div =$('<div>');
+
+        h1.text(JSON.stringify(response.Title));
+        img.attr('src',response.Poster)
+           .attr('height', '300px');
+        p.text(response.Plot);
+        h3.text('Rating: ' + 'Metascore = '+ response.Metascore + ' | ' + 'IMDb = ' + response.imdbRating);
+
+        $('#movie-overview').append(h1)
+                            .append(img)
+                            .append(p)
+                            .append(h3);
+
     });
 })
 
