@@ -29,7 +29,11 @@ $('form').keypress(function(event) {
 }); 
 
 $('#button-container').on('click','button',function() {
-    
+    // $(document).ajaxStart(function() {
+    //     $("#loading").show();
+    //   }).ajaxStop(function() {
+    //     $("#loading").hide();
+    //   });
 
     $('#movie-overview').empty();
 
@@ -79,9 +83,16 @@ $('#button-container').on('click','button',function() {
 
 // Get giphy api
     // append to 10 gifs to div
-// Get imdb api
-    // append movie title, image, and plot
+    // we need an image node with attributes holding still image, animated gif, and state
+    // still image will look like : data.data[i].images.fixed_height_still.url
+    // still image will look like : data.data[i].images.fixed_height.url
 
+// Loading code - add to start of button click listener? Need to add loading gif
+//     $(document).ajaxStart(function() {
+  //   $("#loading").show();
+//     }).ajaxStop(function() {
+  //   $("#loading").hide();
+//     });
 
     
 
