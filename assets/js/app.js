@@ -29,11 +29,11 @@ $('form').keypress(function(event) {
 }); 
 
 $('#button-container').on('click','button',function() {
-    // $(document).ajaxStart(function() {
-    //     $("#loading").show();
-    //   }).ajaxStop(function() {
-    //     $("#loading").hide();
-    //   });
+    $(document).ajaxStart(function() {
+        $("#loading").show();
+      }).ajaxStop(function() {
+        $("#loading").hide();
+      });
 
     $('#movie-overview').empty();
 
