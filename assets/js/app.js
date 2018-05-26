@@ -82,9 +82,10 @@ $('#button-container').on('click','button',function() {
     }).then(function(data) {
         console.log(data);
 
-        img = $('<img>');
+
 
         for (let i = 0; i < data.data.length; i++) {
+            img = $('<img>');
             img.attr('src', data.data[i].images.fixed_height_still.url)
                .attr('state','still')
                .attr('still', data.data[i].images.fixed_height_still.url)
