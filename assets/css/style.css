@@ -18,5 +18,7 @@ overflow-x: auto;
 width: 40%;
 border: red dashed 1pt;
 overflow-y: auto;
+height: 500px;
+overflow: auto;
 }
 

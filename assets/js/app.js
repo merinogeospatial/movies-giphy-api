@@ -1,3 +1,13 @@
+$(document).ready(function(){
+
+    // Loading gif bind
+    $('.loading-1').bind('ajaxStart', function(){
+        $(this).show();
+    }).bind('ajaxStop', function(){
+        $(this).hide();
+    });
+
+
 // Declare global variables
 let movArr = ["The Avengers","Home Alone", "Deadpool","Star Wars","Titanic","The Hunger Games","Finding Nemo",];
 let movie;
@@ -36,8 +46,8 @@ $('form').keypress(function(event) {
 // Click listener on movie buttons, requests from giphy and omdb
 $('#button-container').on('click','button',function() {
 
-    $('#loading-1').show();
-    $('#loading-2').show();
+    // $('#loading-1').show();
+    // $('#loading-2').show();
 
     $('#movie-overview').empty();
     $('#gif-container').empty();
@@ -53,31 +63,35 @@ $('#button-container').on('click','button',function() {
 
         url: queryURL,
         method: 'GET',
-        success:function(response){
+        // success:function(response){
 
-            $('#loading-1').hide();
+        //     $('#loading-1').hide();
 
-        } 
+        // } 
     }).then(function(response) {
 
         console.log(response);
 
-        h1 = $('<h1>');
-        img = $('<img>');
-        p = $('<p>');
-        h3 = $('<h3>');
-        div =$('<div>');
-        h1.text(JSON.stringify(response.Title));
-        img.attr('src',response.Poster)
-           .attr('height', '300px');
-        p.text(response.Plot);
-        h3.text('Rating: ' + 'Metascore = '+ response.Metascore + ' | ' + 'IMDb = ' + response.imdbRating);
+        if (response.Title) {
+            h1 = $('<h1>');
+            img = $('<img>');
+            p = $('<p>');
+            h3 = $('<h3>');
+            div =$('<div>');
+            h1.text(JSON.stringify(response.Title));
+            img.attr('src',response.Poster)
+            .attr('height', '300px');
+            p.text(response.Plot);
+            h3.text('Rating: ' + 'Metascore = '+ response.Metascore + ' | ' + 'IMDb = ' + response.imdbRating);
 
-        $('#movie-overview').append(h1)
-                            .append(img)
-                            .append(p)
-                            .append(h3);
-        
+            $('#movie-overview').append(h1)
+                                .append(img)
+                                .append(p)
+                                .append(h3);
+                        }
+
+        else { $('#movie-overview').html(`<h1>Movie/show not found!</h1>
+                                            <br><h3>Please check your spelling and try again.</h3>`)};
     });
 
     // Giphy API Request + Response Handling Here
@@ -90,11 +104,11 @@ $('#button-container').on('click','button',function() {
 
         url: GIFqueryURL,
         method: 'GET',
-        success:function(response){
+        // success:function(response){
 
-            $('#loading-2').hide();
+        //     $('#loading-2').hide();
 
-        }
+        // }
     }).then(function(data) {
 
         console.log(data);
@@ -136,9 +150,11 @@ initButtons(movArr);
         // you will have to use the on click to pass binding from parent to child
 
 // Error handling if movie is not found
+// Failed to load http://www.omdbapi.com/?apikey=trilogy&t=Frozen: No 'Access-Control-Allow-Origin' 
+// header is present on the requested resource. Origin 'null' is therefore not allowed access. The response had HTTP status code 524.
 
 
-
+});
 
 
 
