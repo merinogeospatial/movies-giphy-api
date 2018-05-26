@@ -48,12 +48,13 @@ $('#button-container').on('click','button',function() {
             $('#loading-1').hide();
         } 
     }).then(function(response) {
+        console.log(response);
+
         h1 = $('<h1>');
         img = $('<img>');
         p = $('<p>');
         h3 = $('<h3>');
         div =$('<div>');
-        console.log(response);
         h1.text(JSON.stringify(response.Title));
         img.attr('src',response.Poster)
            .attr('height', '300px');
@@ -81,6 +82,16 @@ $('#button-container').on('click','button',function() {
     }).then(function(data) {
         console.log(data);
 
+        img = $('<img>');
+
+        for (let i = 0; i < data.data.length; i++) {
+            img.attr('src', data.data[i].images.fixed_height_still.url)
+               .attr('state','still')
+               .attr('still', data.data[i].images.fixed_height_still.url)
+               .attr('animate', data.data[i].images.fixed_height.url);
+            console.log(img);
+            $('#gif-container').append(img);
+        }
     });
 })
 
@@ -89,6 +100,9 @@ $('#button-container').on('click','button',function() {
     // we need an image node with attributes holding still image, animated gif, and state
     // still image will look like : data.data[i].images.fixed_height_still.url
     // still image will look like : data.data[i].images.fixed_height.url
+    // start with <img src="..." state="still" still="...jpg" animate="...gif"
+    // create on click for the dynamic images
+        // you will have to use the on click to pass binding from parent to child
 
 
 
