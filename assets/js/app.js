@@ -15,7 +15,7 @@ function initButtons(arr) {
 
 $('#add-movie').on('click', function(){
     $('#button-container').empty();
-    newMovie = $('#inlineFormInput').val();
+    newMovie = $('#inlineFormInput').val().trim();
     movArr.push(newMovie);
     initButtons(movArr);
 
@@ -29,11 +29,8 @@ $('form').keypress(function(event) {
 }); 
 
 $('#button-container').on('click','button',function() {
-    $(document).ajaxStart(function() {
-        $("#loading").hide();
-      }).ajaxStop(function() {
-        $("#loading").show();
-      });
+    $('#loading-1').show();
+    $('#loading-2').show();
 
     $('#movie-overview').empty();
 
@@ -42,18 +39,21 @@ $('#button-container').on('click','button',function() {
     baseURL = 'http://www.omdbapi.com/?apikey=';
     apiKey = 'trilogy';
     queryURL = baseURL + apiKey + '&t=' + movie;
+    
 
     $.ajax({
         url: queryURL,
-        method: 'GET'
+        method: 'GET',
+        success:function(response){
+            $('#loading-1').hide();
+        } 
     }).then(function(response) {
-    
         h1 = $('<h1>');
         img = $('<img>');
         p = $('<p>');
         h3 = $('<h3>');
         div =$('<div>');
-
+        console.log(response);
         h1.text(JSON.stringify(response.Title));
         img.attr('src',response.Poster)
            .attr('height', '300px');
@@ -64,6 +64,7 @@ $('#button-container').on('click','button',function() {
                             .append(img)
                             .append(p)
                             .append(h3);
+        
     });
 
     // Giphy API Request + Response Handling Here
@@ -73,9 +74,11 @@ $('#button-container').on('click','button',function() {
 
     $.ajax({
         url: GIFqueryURL,
-        method: 'GET'
+        method: 'GET',
+        success:function(response){
+            $('#loading-2').hide();
+        }
     }).then(function(data) {
-
         console.log(data);
 
     });
@@ -87,14 +90,7 @@ $('#button-container').on('click','button',function() {
     // still image will look like : data.data[i].images.fixed_height_still.url
     // still image will look like : data.data[i].images.fixed_height.url
 
-// Loading code - add to start of button click listener? Need to add loading gif
-//     $(document).ajaxStart(function() {
-  //   $("#loading").show();
-//     }).ajaxStop(function() {
-  //   $("#loading").hide();
-//     });
 
-    
 
 
 
