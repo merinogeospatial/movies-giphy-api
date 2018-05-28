@@ -6,17 +6,18 @@ body {
     width: 100%;
     height: 10%; 
     overflow: auto;
+    border-bottom: #007bff solid 4pt;
 }
 
 #movie-overview {
 width: 40%;
-border: red dashed 1pt;
+border-right: #007bff solid 2pt;
 overflow-x: auto;
 }
 
 #gif-container {
 width: 40%;
-border: red dashed 1pt;
+border-left: #007bff solid 2pt;
 overflow-y: auto;
 height: 500px;
 overflow: auto;
@@ -31,5 +32,9 @@ overflow: auto;
     position: absolute;
     right: 2%;
     top:50%;
+ }
+
+ .main-title {
+     color: #007bff;
  }
 

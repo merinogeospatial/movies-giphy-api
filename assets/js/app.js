@@ -118,7 +118,7 @@ $('#button-container').on('click','button',function() {
             img.attr('src', data.data[i].images.fixed_width_still.url)
                .attr('state','still')
                .attr('still', data.data[i].images.fixed_width_still.url)
-               .attr('animate', data.data[i].images.fixed_height.url)
+               .attr('animate', data.data[i].images.fixed_width.url)
                .addClass('m-1');
             console.log(img);
             $('#gif-container').append(img);
@@ -130,6 +130,14 @@ $('#button-container').on('click','button',function() {
 // Click listener to toggle between animated gif and still image
 $('#gif-container').on('click', 'img', function() {
     
+    if ($(this).attr('state') === 'still') {
+        $(this).attr('state','animate')
+               .attr('src',$(this).attr('animate'));
+    }
+    else {
+        $(this).attr('state','still')
+        .attr('src',$(this).attr('still'));
+    }
 
 })
 
