@@ -139,28 +139,9 @@ $('#gif-container').on('click', 'img', function() {
         .attr('src',$(this).attr('still'));
     }
 
-})
-
-
-
-
-
+    })
 
 initButtons(movArr);
-
-// Get giphy api
-    // append to 10 gifs to div
-    // we need an image node with attributes holding still image, animated gif, and state
-    // still image will look like : data.data[i].images.fixed_height_still.url
-    // still image will look like : data.data[i].images.fixed_height.url
-    // start with <img src="..." state="still" still="...jpg" animate="...gif"
-    // create on click for the dynamic images
-        // you will have to use the on click to pass binding from parent to child
-
-// Error handling if movie is not found
-// Failed to load http://www.omdbapi.com/?apikey=trilogy&t=Frozen: No 'Access-Control-Allow-Origin' 
-// header is present on the requested resource. Origin 'null' is therefore not allowed access. The response had HTTP status code 524.
-
 
 });
 
