@@ -54,7 +54,7 @@ $('#button-container').on('click','button',function() {
 
     // OMDB API Request + Response Handling Here
     movie = $(this).attr('data').trim();
-    baseURL = 'http://www.omdbapi.com/?apikey=';
+    baseURL = 'https://www.omdbapi.com/?apikey=';
     apiKey = 'trilogy';
     queryURL = baseURL + apiKey + '&t=' + movie;
     
@@ -95,7 +95,7 @@ $('#button-container').on('click','button',function() {
     });
 
     // Giphy API Request + Response Handling Here
-    GIFbaseURL = 'http://api.giphy.com/v1/gifs/search?q=';
+    GIFbaseURL = 'https://api.giphy.com/v1/gifs/search?q=';
     GIFapiKey = '&limit=10&api_key=l7BH2odGrHlcmcFxkXssYzBU6RXc94UM';
     GIFqueryURL = GIFbaseURL + movie + GIFapiKey;
 
